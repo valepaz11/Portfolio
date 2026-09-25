@@ -1,8 +1,10 @@
-const Hero = () => {
+import foto from '../assets/foto.jpg'
+const Hero = (props) => {
   return (
     <div>
-      <h2>Hola, soy Valentina Paz</h2>
-      <p>Estoy estudiando Programación, me interesa la informática y el desarrollo de software.</p>
+      <h2>{props.titulo}</h2>
+      <p>{props.descripcion}</p>
+      <img src={foto} alt="Foto de Valentina Paz" />
     </div>
   )
 }

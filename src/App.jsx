@@ -8,7 +8,10 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Hero />
+      <Hero 
+         titulo="Hola, bienvenido a mi portfolio"
+         descripcion="Soy estudiante de Programación y estoy aprendiendo sobre desarrollo web."
+      />
       <About />
       <Skills />
       <Projects />

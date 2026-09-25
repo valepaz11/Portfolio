@@ -1,10 +1,12 @@
 const About = () => {
+    
   return (
-    <div>
+    <div className="about">
       <h2>Sobre mí</h2>
       <p>
-        Soy Paz Valentina, estudiante de Programación.
-        Me interesa aprender sobre desarrollo web y seguir creciendo en el área.
+        Soy estudiante de Programación. Me gusta aprender sobre tecnología,
+        programación y desarrollo web. También me interesa seguir mejorando
+        mis conocimientos y aprender cosas nuevas.
       </p>
     </div>
   )

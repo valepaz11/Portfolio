@@ -1,13 +1,29 @@
+import { useState } from "react"
+
 const Skills = () => {
-  const habilidades = ["HTML", "C #", "JavaScript", "React"]
+  const [mostrar, setMostrar] = useState(false)
+
+  const habilidades = ["HTML", "JavaScript", "C  #"]
+
+  const mostrarHabilidades = () => {
+    setMostrar(!mostrar)
+  }
 
   return (
-    <div>
+    <div className="skills">
       <h2>Mis habilidades</h2>
 
-      {habilidades.map((habilidad) => (
-        <p key={habilidad}>{habilidad}</p>
-      ))}
+      <button onClick={mostrarHabilidades}>
+        Ver habilidades
+      </button>
+
+      {mostrar && (
+        <div>
+          {habilidades.map((habilidad) => (
+            <p key={habilidad}>{habilidad}</p>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
