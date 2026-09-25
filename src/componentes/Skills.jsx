@@ -1,29 +1,35 @@
-import { useState } from "react"
-
 const Skills = () => {
-  const [mostrar, setMostrar] = useState(false)
-
-  const habilidades = ["HTML", "JavaScript", "C  #"]
-
-  const mostrarHabilidades = () => {
-    setMostrar(!mostrar)
-  }
+  const habilidades = [
+    {
+      nombre: "HTML",
+      descripcion: "Estructura de páginas web"
+    },
+    {
+      nombre: "CSS",
+      descripcion: "Diseño y estilos"
+    },
+    {
+      nombre: "JavaScript",
+      descripcion: "Programación web"
+    },
+    {
+      nombre: "C #",
+      descripcion: "Programación"
+    }
+  ]
 
   return (
     <div className="skills">
       <h2>Mis habilidades</h2>
 
-      <button onClick={mostrarHabilidades}>
-        Ver habilidades
-      </button>
-
-      {mostrar && (
-        <div>
-          {habilidades.map((habilidad) => (
-            <p key={habilidad}>{habilidad}</p>
-          ))}
-        </div>
-      )}
+      <div className="skills-cards">
+        {habilidades.map((habilidad) => (
+          <div className="skill-card" key={habilidad.nombre}>
+            <h3>{habilidad.nombre}</h3>
+            <p>{habilidad.descripcion}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

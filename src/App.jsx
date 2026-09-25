@@ -7,11 +7,12 @@ import Footer from "./componentes/Footer"
 const App = () => {
   return (
     <div>
-      <Header />
-      <Hero 
-         titulo="Hola, bienvenido a mi portfolio"
-         descripcion="Soy estudiante de Programación y estoy aprendiendo sobre desarrollo web."
-      />
+     <Header />
+     <Hero
+      nombre="Paz Valentina"
+      profesion="Estudiante de Programación"
+      
+     />
       <About />
       <Skills />
       <Projects />
