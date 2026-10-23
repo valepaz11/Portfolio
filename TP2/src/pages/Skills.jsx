@@ -1,5 +1,7 @@
+import SkillsCard from "../components/SkillCard";
+
 const Skills = () => {
-  const habilidades = ["HTML", "CSS", "JavaScript", "Rea ct", "C #"];
+  const habilidades = ["HTML", "CSS", "JavaScript", "React", "C#"];
 
   return (
     <div className="skills">
@@ -7,10 +9,10 @@ const Skills = () => {
 
       <div className="skills-cards">
         {habilidades.map((habilidad, index) => (
-          <div className="skill-card" key={index}>
-            <h3>{habilidad}</h3>
-            <p>Conocimientos de {habilidad}</p>
-          </div>
+          <SkillsCard
+            key={index}
+            nombre={habilidad}
+          />
         ))}
       </div>
     </div>
