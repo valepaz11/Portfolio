@@ -1,111 +1,384 @@
+/* ==========================================================
+   Portfolio – estilo editorial, misma paleta violeta
+   Reemplaza TODO el index.css. App.css puede quedar vacío.
+   ========================================================== */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --fondo: #fcf9fd;
+  --texto: #44394b;
+  --texto-suave: #62566a;
+  --texto-tenue: #766d7c;
+  --acento: #80529a;
+  --acento-claro: #c9a9d9;
+  --lila: #f1e7f7;
+  --borde: #e5d8ed;
+  --oscuro: #44394b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
+* {
   margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+html {
+  scroll-behavior: smooth;
 }
 
-h1 {
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background-color: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--acento-claro);
+  outline-offset: 3px;
+}
+
+/* ====== Layout: aside 30% / main 70% ====== */
+.portfolio {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  min-height: 100vh;
+}
+
+.contenido {
+  min-width: 0;
+  width: 100%;
+  max-width: 880px;
+  padding: 72px 7% 80px;
+}
+
+/* ====== Sidebar oscura ====== */
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 56px 36px;
+  background-color: var(--oscuro);
+  color: var(--lila);
+  counter-reset: item;
+}
+
+.sidebar::before {
+  content: "Portfolio";
+  display: block;
+  margin-bottom: 44px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(241, 231, 247, 0.2);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-style: italic;
+  color: var(--acento-claro);
+}
+
+.sidebar > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar a {
+  counter-increment: item;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--borde);
+  transition: background-color 0.2s, color 0.2s, padding-left 0.2s;
+}
+
+.sidebar a::before {
+  content: "0" counter(item);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--acento-claro);
+  opacity: 0.8;
+}
+
+.sidebar a:hover {
+  background-color: rgba(241, 231, 247, 0.08);
+  color: #fff;
+  padding-left: 22px;
+}
+
+/* Opción activa (NavLink agrega la clase "active") */
+.sidebar a.active,
+.sidebar a[aria-current="page"] {
+  background-color: var(--acento);
+  color: #fff;
+  font-weight: 600;
+}
+
+.sidebar a.active::before,
+.sidebar a[aria-current="page"]::before {
+  color: var(--lila);
+  opacity: 1;
+}
+
+/* ====== Títulos de página ====== */
+.about h2,
+.skills h2,
+.projects h1,
+.projects h2:first-child,
+.contact h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--texto);
+  margin-bottom: 40px;
+}
+
+.about h2::after,
+.skills h2::after,
+.projects h1::after,
+.contact h1::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 2px;
+  background-color: var(--acento);
+}
+
+/* ====== Inicio ====== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+  min-height: 70vh;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+  line-height: 1.05;
+  color: var(--acento);
+  margin-bottom: 16px;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.hero-text h2 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 20px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.hero-text p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: var(--texto-suave);
+  max-width: 480px;
+}
+
+/* Foto con marco desplazado */
+.hero-foto {
+  flex-shrink: 0;
+  width: 260px;
+  height: 320px;
+  border-radius: 6px;
+  box-shadow: 14px 14px 0 var(--borde);
+}
+
+.hero-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ====== Sobre mí ====== */
+.about-cards,
+.projects-cards,
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.about-cards > div,
+.project-card,
+.contact-card {
+  background-color: #fff;
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--acento);
+  border-radius: 6px;
+  padding: 24px 26px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.about-cards > div:hover,
+.project-card:hover,
+.contact-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--acento-claro);
+  border-left-color: var(--acento);
+}
+
+.about-cards h3,
+.project-card h2,
+.project-card h3,
+.contact-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  color: var(--acento);
+  margin-bottom: 10px;
+}
+
+.about-cards p,
+.project-card p,
+.contact-card p {
+  color: var(--texto-suave);
+  line-height: 1.7;
+}
+
+/* ====== Habilidades: fichas lilas ====== */
+.skills-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  background-color: var(--lila);
+  border-radius: 10px;
+  padding: 20px 24px;
+  transition: background-color 0.25s, transform 0.25s;
+}
+
+.skill-card h3 {
+  font-size: 19px;
+  color: var(--acento);
+  margin-bottom: 4px;
+  transition: color 0.25s;
+}
+
+.skill-card p {
+  font-size: 14px;
+  color: var(--texto-suave);
+  transition: color 0.25s;
+}
+
+.skill-card:hover {
+  background-color: var(--acento);
+  transform: translateY(-3px);
+}
+
+.skill-card:hover h3,
+.skill-card:hover p {
+  color: #fff;
+}
+
+/* ====== Contacto ====== */
+.contact p {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--borde);
+  font-size: 18px;
+  color: var(--texto-suave);
+}
+
+.contact a {
+  color: var(--acento);
+}
+
+/* ====== Celulares / pantallas chicas ====== */
+@media (max-width: 800px) {
+  .portfolio {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 20px 14px;
+  }
+
+  .sidebar::before {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .sidebar > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .sidebar a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .sidebar a::before {
+    display: none;
+  }
+
+  .sidebar a:hover {
+    padding-left: 12px;
+  }
+
+  .contenido {
+    max-width: none;
+    padding: 36px 6% 56px;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    min-height: 0;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+  }
+
+  .hero-text p {
+    margin: 0 auto;
+  }
+
+  .hero-foto {
+    width: 200px;
+    height: 250px;
+    box-shadow: 10px 10px 0 var(--borde);
+  }
+
+  .about h2,
+  .skills h2,
+  .projects h1,
+  .contact h1 {
+    font-size: 30px;
+    margin-bottom: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
