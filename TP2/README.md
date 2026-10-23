@@ -1,16 +1,51 @@
-# React + Vite
+# TP2 - Mi Portfolio Multipágina con React Router DOM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Alumna:** Paz Valentina  
+**Carrera:** Tecnicatura Universitaria en Programación 
+**Comisión:** 7
 
-Currently, two official plugins are available:
+## Descripción del trabajo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este proyecto consiste en desarrollar un portfolio personal multipágina utilizando React y React Router DOM. El sitio permite navegar entre diferentes secciones para presentar información personal, habilidades, proyectos y datos de contacto.
 
-## React Compiler
+## Páginas del portfolio
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Inicio
+- Sobre mí
+- Habilidades
+- Proyectos
+- Contacto
 
-## Expanding the ESLint configuration
+## Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- JavaScript
+- CSS
+- React Router DOM
+- Git y GitHub
+
+## Funcionalidades
+
+- Navegación entre páginas mediante React Router DOM.
+- Componentes reutilizables.
+- Uso de props para compartir información entre componentes.
+- Uso de arrays, map y key para mostrar habilidades y proyectos.
+- Uso de useState y eventos para interactuar con la página.
+- Diseño adaptable a diferentes tamaños de pantalla.
+
+## Instalación y ejecución
+
+1. Clonar el repositorio.
+2. Abrir una terminal en la carpeta del proyecto.
+3. Instalar las dependencias:
+
+   npm install
+
+4. Iniciar el servidor de desarrollo:
+
+   npm run dev
+
+5. Abrir en el navegador la dirección que muestra la terminal.
+
+

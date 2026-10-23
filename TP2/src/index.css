@@ -131,7 +131,6 @@ a:focus-visible {
 .about h2,
 .skills h2,
 .projects h1,
-.projects h2:first-child,
 .contact h1 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 38px;
@@ -291,15 +290,74 @@ a:focus-visible {
 }
 
 /* ====== Contacto ====== */
-.contact p {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--borde);
-  font-size: 18px;
-  color: var(--texto-suave);
+.contact-card p {
+  font-size: 17px;
+  word-break: break-word;
 }
 
 .contact a {
   color: var(--acento);
+  text-underline-offset: 3px;
+}
+
+.contact a:hover {
+  color: var(--texto);
+}
+
+/* Botón "Mostrar mensaje" */
+.contact button {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--acento);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.contact button:hover {
+  background-color: var(--oscuro);
+  transform: translateY(-2px);
+}
+
+.contact button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.contact button:focus-visible {
+  outline: 3px solid var(--acento-claro);
+  outline-offset: 3px;
+}
+
+/* Mensaje que aparece al apretar el botón
+   (clase .mensaje, o un <p> directo dentro de .contact) */
+.mensaje,
+.contact > p {
+  margin-top: 24px;
+  padding: 18px 24px;
+  background-color: var(--lila);
+  border-left: 4px solid var(--acento);
+  border-radius: 6px;
+  font-size: 17px;
+  color: var(--texto);
+  animation: aparecer 0.35s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ====== Celulares / pantallas chicas ====== */
@@ -373,6 +431,40 @@ a:focus-visible {
   .contact h1 {
     font-size: 30px;
     margin-bottom: 28px;
+  }
+}
+
+/* ====== Celulares chicos ====== */
+@media (max-width: 600px) {
+  .about-cards,
+  .projects-cards,
+  .contact-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-cards > div,
+  .project-card,
+  .contact-card {
+    padding: 20px;
+  }
+
+  .skills-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .skill-card {
+    padding: 16px;
+  }
+
+  .contact button {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .hero-text h1 {
+    font-size: 34px;
   }
 }
 
